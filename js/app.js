@@ -64,14 +64,6 @@ $(document).ready(function(){
 
   function isGameOver(){
     //only check rows
-
-    for(let i = 0; i < 4; i++){
-      if(grid[i][0] !== ' '
-      && grid[i][0] === grid[i][1]
-      && grid[i][0] === grid[i][2]
-      && grid[i][0] === grid[i][3]) {
-        return grid[i][0];
-
     for(let k = 0; k < 4; k++) {
       for(let i = 0; i < 4; i++) {
         if(grid[k][i][0] !== ' ' && grid[k][i][0] === grid[k][i][1] && grid[k][i][0] === grid[k][i][2] && grid[k][i][0] === grid[k][i][3]) {
@@ -81,16 +73,6 @@ $(document).ready(function(){
       }
     }
 
-    //only check vertical
-
-    for(let j = 0; j < 4; j++){
-      if(grid[0][j] !== ' '
-      && grid[0][j] === grid[1][j]
-      && grid[0][j] === grid[2][j]
-      && grid[0][j] === grid[3][j]) {
-        return grid[0][j];
-      }
-    }
     //for the diagonal
     if(grid[0][0] !== ' '
     && grid[0][0] === grid[1][1]
@@ -98,16 +80,15 @@ $(document).ready(function(){
     && grid[0][0] === grid[3][3]){
       return grid[0][0];
     }
+
     if(grid[0][3] !== ' '
     && grid[0][3] === grid[1][2]
     && grid[0][3] === grid[2][1]
     && grid[0][3] === grid[3][0])  {
       return grid[0][3];
     }
-  }
 
-
-
+    //only check vertical
     for(let k = 0; k < 4; k++) {
       for(let j = 0; j < 4; j++) {
         if(grid[k][0][j] !== ' ' && grid[k][0][j] === grid[k][1][j] && grid[k][0][j] === grid[k][2][j] && grid[k][0][j] === grid[k][3][j]) {
@@ -118,12 +99,13 @@ $(document).ready(function(){
 
     //checks up and down 3d
     for(let i = 0; i < 4; i++) {
-      for(let k = 0; k < 4; k++) {
+      for(let j = 0; j < 4; j++) {
         if(grid[0][i][j] !== ' ' && grid[0][i][j] === grid[1][i][j] && grid[0][i][j] === grid[2][i][j] && grid[0][i][j] === grid[3][i][j]) {
           return grid[0][i][j];
         }
       }
     }
+
 
     //checks diagonal 3d
     // for(let i = 0; i < 4; i++) {
@@ -132,7 +114,7 @@ $(document).ready(function(){
     //       return grid[0][i][j];
     //     }
     //   }
-    // }
+    }
 
 
 
