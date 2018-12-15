@@ -16,7 +16,8 @@ $(document).ready(function(){
     grid[i][j] = PLAYER_TOKEN;
     console.log(grid);
     if (isGameOver()){
-      alert('You Win');
+      console.log('winner');
+      // alert('You Win');
     }
   });
 
@@ -27,22 +28,18 @@ $(document).ready(function(){
 
   function isGameOver(){
     //only check rows
-    let count = 0;
-    for(let i = 0; i<grid.length; i++){
-      for(let j = 0; j<grid[0].length;j++){
-        if(grid[i][j] == PLAYER_TOKEN){
-          console.log(grid[i][j]);
-          count++;
-        }
-        if (count == 4){
-          return true;
-        }
-        console.log(count);
-      }
-      count = 0;
+  for(let i = 0; i < 4; i++){
+    if(grid[i][0] !== ' ' && grid[i][0] === grid[i][1] && grid[i][0] === grid[i][2] && grid[i][0] === grid[i][3]) {
+      return grid[i][0];
     }
+  }
+  //only check vertical
+for(let j = 0; j < 4; j++){
+  if(grid[0][j] !== ' ' && grid[0][j] === grid[1][j] && grid[0][j] === grid[2][j] && grid[0][j] === grid[3][j]) {
+    return grid[0][j];
+  }
+}
 
-    return false;
 
   }
 
