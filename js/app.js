@@ -32,18 +32,16 @@ $(document).ready(function(){
 
   $('.col').click(function(){
     $this = $(this);
+    const i = $this.data('i');
+    const j = $this.data('j');
+    const k = $this.data('k');
+
     if (playerTurn == 0) {
       $this.html(PLAYERONE_TOKEN);
-      const i = $this.data('i');
-      const j = $this.data('j');
-      const k = $this.data('k');
       grid[k][i][j] = PLAYERONE_TOKEN;
       playerTurn = 1;
     } else if (playerTurn == 1) {
       $this.html(PLAYERTWO_TOKEN);
-      const i = $this.data('i');
-      const j = $this.data('j');
-      const k = $this.data('k');
       grid[k][i][j] = PLAYERTWO_TOKEN;
       playerTurn = 0;
     }
@@ -74,19 +72,21 @@ $(document).ready(function(){
     }
 
     //for the diagonal
-    if(grid[0][0] !== ' '
-    && grid[0][0] === grid[1][1]
-    && grid[0][0] === grid[2][2]
-    && grid[0][0] === grid[3][3]){
-      return grid[0][0];
-    }
+    for(let k = 0; k < 4; k++) {
+      if(grid[k][0][0] !== ' '
+      && grid[k][0][0] === grid[k][1][1]
+      && grid[k][0][0] === grid[k][2][2]
+      && grid[k][0][0] === grid[k][3][3]){
+        return grid[k][0][0];
+      }
 
-    if(grid[0][3] !== ' '
-    && grid[0][3] === grid[1][2]
-    && grid[0][3] === grid[2][1]
-    && grid[0][3] === grid[3][0])  {
-      return grid[0][3];
-    }
+      if(grid[k][0][3] !== ' '
+      && grid[k][0][3] === grid[k][1][2]
+      && grid[k][0][3] === grid[k][2][1]
+      && grid[k][0][3] === grid[k][3][0])  {
+        return grid[k][0][3];
+      }
+  }
 
     //only check vertical
     for(let k = 0; k < 4; k++) {
