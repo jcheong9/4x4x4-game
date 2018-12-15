@@ -1,6 +1,5 @@
 const PLAYERONE_TOKEN = 'X';
 const PLAYERTWO_TOKEN = 'O';
-
 let playerTurn = 0;
 $(document).ready(function(){
   const grid = [
@@ -57,14 +56,24 @@ $(document).ready(function(){
 
   $('#restart').click(function(){
     $('.col').html(" ");
+    for(let k = 0; k < 4; k++) {
+      for(let i = 0; i < 4; i++) {
+        for(let j = 0; j < 4; j++) {
+          grid[k][i][j]=' ';
+        }}}
+
 
   });
 
   function isGameOver(){
     //only check rows
+
     for(let k = 0; k < 4; k++) {
       for(let i = 0; i < 4; i++) {
-        if(grid[k][i][0] !== ' ' && grid[k][i][0] === grid[k][i][1] && grid[k][i][0] === grid[k][i][2] && grid[k][i][0] === grid[k][i][3]) {
+        if(grid[k][i][0] !== ' '
+        && grid[k][i][0] === grid[k][i][1]
+        && grid[k][i][0] === grid[k][i][2]
+        && grid[k][i][0] === grid[k][i][3]) {
           return grid[k][i][0];
         }
 
@@ -91,7 +100,10 @@ $(document).ready(function(){
     //only check vertical
     for(let k = 0; k < 4; k++) {
       for(let j = 0; j < 4; j++) {
-        if(grid[k][0][j] !== ' ' && grid[k][0][j] === grid[k][1][j] && grid[k][0][j] === grid[k][2][j] && grid[k][0][j] === grid[k][3][j]) {
+        if(grid[k][0][j] !== ' '
+        && grid[k][0][j] === grid[k][1][j]
+        && grid[k][0][j] === grid[k][2][j]
+        && grid[k][0][j] === grid[k][3][j]) {
           return grid[k][0][j];
         }
       }
@@ -100,7 +112,10 @@ $(document).ready(function(){
     //checks up and down 3d
     for(let i = 0; i < 4; i++) {
       for(let j = 0; j < 4; j++) {
-        if(grid[0][i][j] !== ' ' && grid[0][i][j] === grid[1][i][j] && grid[0][i][j] === grid[2][i][j] && grid[0][i][j] === grid[3][i][j]) {
+        if(grid[0][i][j] !== ' '
+        && grid[0][i][j] === grid[1][i][j]
+        && grid[0][i][j] === grid[2][i][j]
+        && grid[0][i][j] === grid[3][i][j]) {
           return grid[0][i][j];
         }
       }
