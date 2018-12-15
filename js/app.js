@@ -14,10 +14,10 @@ $(document).ready(function(){
     const i = $this.data('i');
     const j = $this.data('j');
     grid[i][j] = PLAYER_TOKEN;
-    console.log(grid);
+
     if (isGameOver()){
       console.log('winner');
-      // alert('You Win');
+      alert('You Win');
     }
   });
 
@@ -34,9 +34,9 @@ $(document).ready(function(){
     }
   }
   //only check vertical
-for(let j = 0; j < 4; j++){
-  if(grid[0][j] !== ' ' && grid[0][j] === grid[1][j] && grid[0][j] === grid[2][j] && grid[0][j] === grid[3][j]) {
-    return grid[0][j];
+  for(let j = 0; j < 4; j++){
+    if(grid[0][j] !== ' ' && grid[0][j] === grid[1][j] && grid[0][j] === grid[2][j] && grid[0][j] === grid[3][j]) {
+      return grid[0][j];
   }
 }
 
