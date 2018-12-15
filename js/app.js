@@ -25,7 +25,7 @@ $(document).ready(function(){
       grid[i][j] = PLAYERTWO_TOKEN;
       playerTurn = 0;
     }
-     if (isGameOver() === PLAYERONE_TOKEN){
+    if (isGameOver() === PLAYERONE_TOKEN){
       console.log('Player one Wins');
       alert('Player One Wins');
     } else if (isGameOver() === PLAYERTWO_TOKEN) {
@@ -42,18 +42,39 @@ $(document).ready(function(){
   function isGameOver(){
     //only check rows
     for(let i = 0; i < 4; i++){
-      if(grid[i][0] !== ' ' && grid[i][0] === grid[i][1] && grid[i][0] === grid[i][2] && grid[i][0] === grid[i][3]) {
+      if(grid[i][0] !== ' '
+      && grid[i][0] === grid[i][1]
+      && grid[i][0] === grid[i][2]
+      && grid[i][0] === grid[i][3]) {
         return grid[i][0];
       }
     }
     //only check vertical
     for(let j = 0; j < 4; j++){
-      if(grid[0][j] !== ' ' && grid[0][j] === grid[1][j] && grid[0][j] === grid[2][j] && grid[0][j] === grid[3][j]) {
+      if(grid[0][j] !== ' '
+      && grid[0][j] === grid[1][j]
+      && grid[0][j] === grid[2][j]
+      && grid[0][j] === grid[3][j]) {
         return grid[0][j];
+      }
     }
-}
-
-
+    //for the diagonal
+    if(grid[0][0] !== ' '
+    && grid[0][0] === grid[1][1]
+    && grid[0][0] === grid[2][2]
+    && grid[0][0] === grid[3][3]){
+      return grid[0][0];
+    }
+    if(grid[0][3] !== ' '
+    && grid[0][3] === grid[1][2]
+    && grid[0][3] === grid[2][1]
+    && grid[0][3] === grid[3][0])  {
+      return grid[0][3];
+    }
   }
+
+
+
+
 
 });
